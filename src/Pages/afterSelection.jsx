@@ -635,8 +635,8 @@ const AfterSelection = () => {
         </div>
       </div>
       <div className="relative w-full max-w-8xl mx-auto">
-        <div className="flex flex-col w-full px-4 sm:px-6 md:px-10 py-[16px]">
-          <div className="relative w-5/6 py-2 mx-auto overflow-hidden">
+        <div className="flex flex-col w-full px-0 py-[16px]">
+          <div className="relative w-[1032px] py-2 mx-auto overflow-hidden">
             {/* AfterSelection Items */}
             <div
               className="flex transition-transform duration-500"
@@ -1048,7 +1048,7 @@ const AfterSelection = () => {
         </>
       </div>
       <div className="flex w-full justify-end px-12 pb-12 mt-[40px]">
-        <div className=" ButtonsCta px-[36px] py-[19px] rounded-[30px] justify-center items-center gap-4 inline-flex hover:cursor-pointer bg-question_gradient">
+        <div className=" ButtonsCta px-[36px] h-[56px] rounded-[30px] justify-center items-center gap-4 inline-flex hover:cursor-pointer bg-question_gradient">
           <img src={whiteMagic} alt="" />
           <div className="Text text-center text-white text-lg font-semibold leading-[18px]">
             Take AI interview
