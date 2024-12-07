@@ -94,6 +94,12 @@
   cursor: pointer;
 }
 
+.gradient-text {
+  background: linear-gradient(170deg, #154dd1, #5c9aff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 ::-webkit-scrollbar {
   @apply bg-[#D9D9D9] w-2 rounded-xl;
 }

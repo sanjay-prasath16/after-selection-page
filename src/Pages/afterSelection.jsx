@@ -120,13 +120,14 @@ const AfterSelection = () => {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      backgroundColor: "#f9f9f9",
-      borderColor: "#ddd",
+      backgroundColor: "#EBEBEB",
+      borderColor: "#EBEBEB",
       color: "#161616",
       height: "48px",
       width: "full",
       minWidth: "520px",
       fontSize: "18px",
+      fontWeight: "600",
       boxShadow: "none",
       display: "flex",
       justifySelf: "center",
@@ -134,7 +135,7 @@ const AfterSelection = () => {
       alignItems: "center",
       paddingRight: "35px",
       ":hover": {
-        borderColor: "#aaa",
+        borderColor: "#EBEBEB",
       },
     }),
     dropdownIndicator: (provided) => ({
@@ -153,8 +154,8 @@ const AfterSelection = () => {
     menu: (provided) => ({
       ...provided,
       position: "fixed",
-      backgroundColor: "#B9B9B9",
-      border: "1px solid #ddd",
+      backgroundColor: "#D7D7D7",
+      border: "1px solid #EBEBEB",
       borderRadius: "4px",
       zIndex: 999,
       top: "auto",
@@ -176,6 +177,17 @@ const AfterSelection = () => {
       ...provided,
       color: "#161616",
       fontSize: "18px",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "#C3C3EA" : "#D7D7D7",
+      color: "#161616",
+      fontWeight: state.isSelected ? "600" : "400",
+      padding: "10px 20px",
+      cursor: "pointer",
+      ":active": {
+        backgroundColor: "#EBEBEB",
+      },
     }),
   };
 
@@ -326,7 +338,7 @@ const AfterSelection = () => {
 
       <div className="flex flex-col justify-center items-center">
         <div
-          className="LetsGetYouStarted text-center text-[48px] font-bold leading-[56px] 
+          className="LetsGetYouStarted text-center text-[40px] font-bold leading-[56px] 
       text-[#D388FF] break-words my-8 text-transparent w-[900px]"
           style={{
             background:
@@ -644,7 +656,7 @@ const AfterSelection = () => {
                     <img
                       src={item.icon}
                       alt={item.title}
-                      className="w-40 h-40 object-cover "
+                      className="w-[122px] h-[122px] object-cover "
                     />
                     <p className=" text-gray-600 ">{item.title}</p>
                     <h3 className="flex-wrap justify-center items-center flex text-gray-600 mt-2 font-bold text-lg ">
@@ -702,11 +714,11 @@ const AfterSelection = () => {
                 />
               </svg>
               <div className="Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white ">
-                <div className="Heading text-[#5C9AFF] text-[24px] leading-[28px] font-semibold  break-words bg-none">
+                <div className="Heading gradient-text text-[24px] leading-[28px] font-semibold  break-words bg-none">
                   Difficulty Level
                 </div>
                 {/* Display Selected Level */}
-                <div className="text-[#333232] text-[18px] mt-[8px] text-start">
+                <div className="gradient-text text-[18px] mt-[8px] text-start">
                   {selectedLevel}
                 </div>
               </div>
@@ -752,7 +764,6 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
-                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
@@ -829,10 +840,10 @@ const AfterSelection = () => {
                 </defs>
               </svg>
               <div className=" cursor-pointer Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white">
-                <div className="Heading text-[#5C9AFF] text-[24px] font-semibold leading-[28px] break-words bg-none">
+                <div className="Heading gradient-text text-[24px] font-semibold leading-[28px] break-words bg-none">
                   Duration per question
                 </div>
-                <div className="text-[#333232] text-[18px] mt-[8px] text-start">
+                <div className="gradient-text text-[18px] mt-[8px] text-start">
                   {duration} {duration ? "sec" : ""}
                 </div>
               </div>
@@ -878,7 +889,6 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
-                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
@@ -897,6 +907,7 @@ const AfterSelection = () => {
                 onChange={handleChangeDuration}
                 value={options.find((option) => option.value === duration)}
                 placeholder="Select time"
+                isSearchable={false}
               />
             </div>
           </Dialog>
@@ -933,12 +944,12 @@ const AfterSelection = () => {
                 />
               </svg>
               <div className="cursor-pointer Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white">
-                <div className="Heading text-[#5C9AFF] text-[24px] font-semibold leading-[28px] break-words bg-none">
+                <div className="Heading gradient-text text-[24px] font-semibold leading-[28px] break-words bg-none">
                   {questionsList.length
                     ? "Custom questions"
                     : "Type custom interview questions"}
                 </div>
-                <div className="text-[#333232] text-[18px] mt-[8px] text-start">
+                <div className="gradient-text text-[18px] mt-[8px] text-start">
                   {" "}
                   {questionsList.length
                     ? `${questionsList.length} Question${
@@ -959,7 +970,7 @@ const AfterSelection = () => {
                 border: "1px solid var(--logo-gr-Blue-to-pink, #D388FF)",
                 background: "#FFF",
                 boxShadow: "0px 0px 4px 0px #D388FF",
-                padding: "24px",
+                padding: "32px 24px",
               },
               "& .MuiBackdrop-root": {
                 backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -988,17 +999,17 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
-                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
+                marginBottom: "24px"
               }}
             >
               Type custom interview questions
             </DialogTitle>
 
-            <div className="w-full flex flex-col gap-2">
-              <hr className="w-full mt-4 mb-6" />
+            <div className="w-full flex flex-col gap-2 border-t border-t-[#353535] pt-[40px]">
+              
 
               {questions.map((question, index) => (
                 <div
@@ -1023,12 +1034,11 @@ const AfterSelection = () => {
               ))}
             </div>
 
-            <div className="mt-6 flex justify-center">
+            <div className="mt-[32px] flex justify-center">
               <button
                 onClick={handleSaveQuestions}
                 className="ButtonsCta w-[137px] h-[56px] px-[48px] py-[16px] bg-[#0072DC] rounded-[30px] justify-center items-center gap-[16px] inline-flex outline-none border-none"
               >
-                <img src={whiteMagic} alt="" />
                 <div className="Text flex text-center text-white text-[18px] font-[400] break-words">
                   Save
                 </div>
