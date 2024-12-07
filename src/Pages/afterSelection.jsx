@@ -242,7 +242,7 @@ const AfterSelection = () => {
 
   return (
     <div className=".main-container min-h-screen bg-[#F1F4F8]">
-      <div className="NavBar w-full h-full px-10 py-4 bg-white border border-[#D2D2D2] backdrop-blur-[220px] flex justify-between items-center">
+      <div className="NavBar w-full h-[76px] px-10 py-4 bg-white border border-[#D2D2D2] backdrop-blur-[220px] flex justify-between items-center">
         <div className="logo-container w-[130px] h-[46px] relative  bg-[#FFF]">
           <div className="Rectangle7391 w-[130px] h-[46px] relative bg-[#0F0F36] rounded-[15px]" />
           <div className="logo w-[100px] h-[30.22px] absolute left-[15px] top-[8px] bg-[#0F0F36] rounded-[15px] flex justify-center items-center cursor-pointer">
@@ -339,7 +339,7 @@ const AfterSelection = () => {
       <div className="flex flex-col justify-center items-center">
         <div
           className="LetsGetYouStarted text-center text-[40px] font-bold leading-[56px] 
-      text-[#D388FF] break-words my-8 text-transparent w-[900px]"
+      text-[#D388FF] break-words my-4 text-transparent w-[900px]"
           style={{
             background:
               "linear-gradient(325deg, #D388FF 21.06%, #4B94F6 83.52%)",
@@ -370,7 +370,7 @@ const AfterSelection = () => {
             {/* Non-Technical Button */}
 
             <button
-              className={`w-fit p-[16px_30px] text-[18px] flex items-center justify-center rounded-full font-medium transition duration-300 ease-in-out ${
+              className={`w-[322px] h-[48px] text-[18px] flex items-center justify-center rounded-full font-medium transition duration-300 ease-in-out ${
                 selected === "nonTechnical"
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white focus:outline-none border-none"
                   : "bg-white text-gray-700 focus:outline-none border-none"
@@ -502,7 +502,7 @@ const AfterSelection = () => {
 
             {/* Technical Button */}
             <button
-              className={`w-fit p-[16px_30px] text-[18px] flex items-center justify-center rounded-full font-medium transition duration-300 ease-in-out ${
+              className={`w-[322px] h-[48px] text-[18px] flex items-center justify-center rounded-full font-medium transition duration-300 ease-in-out ${
                 selected === "technical"
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white focus:outline-none border-none"
                   : "bg-white text-gray-700 focus:outline-none border-none"
@@ -652,7 +652,7 @@ const AfterSelection = () => {
                   className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 px-2.5"
                   style={{ minWidth: `${100 / cardsPerSlide}%` }}
                 >
-                  <div className="flex flex-col items-center justify-center bg-white border-[1px] border-[#B9B9B9]  shadow-[0px_0px_8px_#C9FFFC] rounded-3xl py-12 ">
+                  <div className="flex flex-col items-center justify-center bg-white border-[1px] border-[#B9B9B9]  shadow-[0px_0px_8px_#C9FFFC] rounded-3xl h-[251px] w-[328px]">
                     <img
                       src={item.icon}
                       alt={item.title}
@@ -687,7 +687,7 @@ const AfterSelection = () => {
         </div>
       </div>
       {/* ///////////Difficulty Card///////// */}
-      <div className="DialogCards w-full flex justify-center gap-8 px-12 my-8">
+      <div className="DialogCards w-full flex justify-center gap-8 px-12">
         <>
           {/* Trigger Button (Selection Panel) */}
           <div
@@ -1047,7 +1047,7 @@ const AfterSelection = () => {
           </Dialog>
         </>
       </div>
-      <div className="flex w-full justify-end px-12 pb-12">
+      <div className="flex w-full justify-end px-12 pb-12 mt-[40px]">
         <div className=" ButtonsCta px-[36px] py-[19px] rounded-[30px] justify-center items-center gap-4 inline-flex hover:cursor-pointer bg-question_gradient">
           <img src={whiteMagic} alt="" />
           <div className="Text text-center text-white text-lg font-semibold leading-[18px]">
