@@ -1,13 +1,14 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import Select from "react-select";
-import image1 from "../assets/image1.png";
-import image2 from "../assets/Aspireit.png";
-import image3 from "../assets/Ellipse 1872.svg";
-import image4 from "../assets/Type=Layila.svg";
 import image5 from "../assets/Edit.svg";
 import whiteMagic from "../assets/whiteMagicIcon.png";
+import Liyla from "../assets/Type=Layila.svg";
+import timer from "../assets/Timer.svg";
+import edit from "../assets/Edit.svg";
+import shield from "../assets/Shield.svg";
+import Navbar from "../Components/Navbar";
 
 const AfterSelection = () => {
   const items = [
@@ -43,10 +44,7 @@ const AfterSelection = () => {
     },
   ];
 
-  const [searchPhrase, setSearchPhrase] = useState("");
-  const [isFocused1, setisFocused1] = useState(false);
   const [selected, setSelected] = useState("nonTechnical");
-  const inputRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
@@ -79,22 +77,6 @@ const AfterSelection = () => {
       prevIndex + cardsPerSlide >= items.length ? 0 : prevIndex + cardsPerSlide
     );
   };
-
-  const focusInput = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
-
-  const handleSearch = (e) => {
-    setSearchPhrase(e.target.value);
-  };
-
-  useEffect(() => {
-    if (isFocused1 === false) {
-      setSearchPhrase("");
-    }
-  }, [isFocused1]);
 
   const [openDifficulty, setOpenDifficulty] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState();
@@ -242,104 +224,11 @@ const AfterSelection = () => {
 
   return (
     <div className=".main-container min-h-screen bg-[#F1F4F8]">
-      <div className="NavBar w-full h-[76px] px-10 py-4 bg-white border border-[#D2D2D2] backdrop-blur-[220px] flex justify-between items-center">
-        <div className="logo-container w-[130px] h-[46px] relative  bg-[#FFF]">
-          <div className="Rectangle7391 w-[130px] h-[46px] relative bg-[#0F0F36] rounded-[15px]" />
-          <div className="logo w-[100px] h-[30.22px] absolute left-[15px] top-[8px] bg-[#0F0F36] rounded-[15px] flex justify-center items-center cursor-pointer">
-            <img
-              className="Aspireit w-[29.452px] h-[30.217px] bg-transparent shrink-0"
-              src={image1}
-            />
-            <img
-              className="Group1000007770 bg-transparent w-[64.384px] h-[13.735px] shrink-0"
-              src={image2}
-            />
-          </div>
-        </div>
-        <div className="SearchBarContainer w-full flex grow justify-center items-center gap-4 bg-white">
-          <div className="InputContainer w-[90%] flex justify-start items-center gap-4 h-[48px] max-w-[657px] pl-6 pr-6 pt-4 pb-4 bg-[#EBEBEB] shadow-[0px_0px_4px_rgba(0,_0,_0,_0.25)] rounded-[32px]">
-            <div className="searchBar inline-flex items-center h-[34px] w-full max-w-[657px] bg-[#EBEBEB]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                className={`w-[22px] h-[22px] shrink-0 rounded-full mr-[8px] ${
-                  isFocused1
-                    ? "transform scale-105 transition-transform duration-300"
-                    : ""
-                }`}
-              >
-                <path
-                  d="M9.49996 2.75C8.16495 2.75 6.85991 3.14588 5.74989 3.88757C4.63986 4.62927 3.7747 5.68347 3.26381 6.91686C2.75292 8.15026 2.61925 9.50745 2.8797 10.8168C3.14015 12.1262 3.78302 13.3289 4.72702 14.2729C5.67102 15.2169 6.87375 15.8598 8.18311 16.1202C9.49248 16.3807 10.8497 16.247 12.0831 15.7361C13.3165 15.2252 14.3707 14.3601 15.1124 13.25C15.854 12.14 16.2499 10.835 16.2499 9.49996C16.2498 7.70979 15.5386 5.99298 14.2728 4.72714C13.0069 3.46131 11.2901 2.75011 9.49996 2.75Z"
-                  stroke="#353535"
-                  strokeWidth="2"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M14.666 14.668L18.3327 18.3346"
-                  stroke="#353535"
-                  strokeWidth="2"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <input
-                className="justify-items-start px-2 w-full max-w-[657px] text-[#353535] pb-[10px] pt-[8px] text-[18px] leading-[18px] border-0 bg-[#EBEBEB] focus:outline-none focus:text-[#353535] placeholder:text-[#353535]"
-                onClick={focusInput}
-                type="text"
-                name="searchBar"
-                value={isFocused1 ? searchPhrase : ""}
-                onChange={handleSearch}
-                onFocus={() => setisFocused1(true)}
-                onBlur={() => setisFocused1(false)}
-                placeholder={isFocused1 ? "|" : "Search"}
-                ref={inputRef}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="Frame1000008205 flex justify-start items-center gap-6 w-fit bg-[#fff]">
-          <div className="Frame1000008204 px-[16px] py-[4px] bg-[#EBEBEB] flex justify-start items-center shadow-[0px_0px_6px_rgba(0,_0,_0,_0.25)] rounded-[40px] backdrop-blur-[4px]">
-            <div className="ButtonsNotification w-[44px] h-[44px] mr-[16px] relative bg-[#EBEBEB] cursor-pointer">
-              <div className="Ellipse w-[44px] h-[44px] absolute left-0 top-0 bg-white rounded-full" />
-              <div className="IconsBell w-[24px] h-[24px] absolute left-[10px] top-[10px] bg-white hover:transform hover:scale-[1.05] hover:transition-transform hover:duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M21 6.50001C21 8.43001 19.43 10 17.5 10C15.57 10 14 8.43001 14 6.50001C14 4.57001 15.57 3.00001 17.5 3.00001C19.43 3.00001 21 4.57001 21 6.50001ZM19 11.79C18.5 11.92 18 12 17.5 12C16.0421 11.9974 14.6447 11.4171 13.6138 10.3862C12.583 9.3553 12.0026 7.95788 12 6.50001C12 5.03001 12.58 3.70001 13.5 2.71001C13.3185 2.48755 13.0897 2.30838 12.8302 2.18555C12.5707 2.06272 12.2871 1.99934 12 2.00001C10.9 2.00001 10 2.90001 10 4.00001V4.29001C7.03 5.17001 5 7.90001 5 11V17L3 19V20H21V19L19 17V11.79ZM12 23C13.11 23 14 22.11 14 21H10C10 21.5304 10.2107 22.0391 10.5858 22.4142C10.9609 22.7893 11.4696 23 12 23Z"
-                    fill="#0072DC"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div className="Profile flex justify-start items-center bg-[#EBEBEB] hover:transform hover:scale-[1.05] hover:transition-transform hover:duration-300 cursor-pointer">
-              <img
-                className="AvatarPic w-[44px] min-w-[44px] h-[44px] bg-none rounded-full"
-                src={image3}
-              />
-            </div>
-          </div>
-          <div className="Ai w-[56px] h-[56px] bg-none cursor-pointer">
-            <img
-              className="Layila min-w-[61px] h-[61px] bg-none rounded-full mt-[-2.5px] hover:transform hover:scale-[1.05] hover:transition-transform hover:duration-300"
-              src={image4}
-            />
-          </div>
-        </div>
-      </div>
-
+      <Navbar assistant={Liyla} />
       <div className="flex flex-col justify-center items-center">
         <div
-          className="LetsGetYouStarted text-center text-[40px] font-bold leading-[56px] 
-      text-[#D388FF] break-words my-4 text-transparent w-[900px]"
+          className="LetsGetYouStarted text-center text-[36px] font-bold leading-[56px] 
+      text-[#D388FF] break-words text-transparent w-[900px]"
           style={{
             background:
               "linear-gradient(325deg, #D388FF 21.06%, #4B94F6 83.52%)",
@@ -350,17 +239,17 @@ const AfterSelection = () => {
         </div>
 
         <div className="YouHaveSelected1024CandidatesForInterview w-[908px] text-center">
-          <span className=" text-[#161616] text-2xl font-[400] leading-[1.2] break-words">
+          <span className=" text-[#161616] text-[20px] font-[400] leading-[1.2] break-words">
             You have selected
           </span>
-          <span className="text-[#161616] text-2xl font-[600] leading-[1.2] break-words">
+          <span className="text-[#161616] text-[20px] font-[600] leading-[1.2] break-words">
             &nbsp;
           </span>
-          <span className="text-[#0072DC] text-2xl font-[600] leading-[1.2] break-words">
+          <span className="text-[#0072DC] text-[20px] font-[600] leading-[1.2] break-words">
             1024 candidates
           </span>
           &nbsp;
-          <span className=" text-[#161616] text-2xl font-[400] leading-[1.2] break-words">
+          <span className=" text-[#161616] text-[20px] font-[400] leading-[1.2] break-words">
             for interview.
           </span>
         </div>
@@ -635,8 +524,8 @@ const AfterSelection = () => {
         </div>
       </div>
       <div className="relative w-full max-w-8xl mx-auto">
-        <div className="flex flex-col w-full px-0 py-[16px]">
-          <div className="relative w-[1032px] py-2 mx-auto overflow-hidden">
+        <div className="flex flex-col w-full px-4 sm:px-6 md:px-10">
+          <div className="relative w-5/6 py-2 mx-auto overflow-hidden">
             {/* AfterSelection Items */}
             <div
               className="flex transition-transform duration-500"
@@ -652,11 +541,11 @@ const AfterSelection = () => {
                   className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 px-2.5"
                   style={{ minWidth: `${100 / cardsPerSlide}%` }}
                 >
-                  <div className="flex flex-col items-center justify-center bg-white border-[1px] border-[#B9B9B9]  shadow-[0px_0px_8px_#C9FFFC] rounded-3xl h-[251px] w-[328px]">
+                  <div className="flex flex-col items-center justify-center bg-white border-[1px] border-[#B9B9B9]  shadow-[0px_0px_8px_#C9FFFC] rounded-3xl py-[18px]">
                     <img
                       src={item.icon}
                       alt={item.title}
-                      className="w-[122px] h-[122px] object-cover "
+                      className="w-40 h-40 object-cover "
                     />
                     <p className=" text-gray-600 ">{item.title}</p>
                     <h3 className="flex-wrap justify-center items-center flex text-gray-600 mt-2 font-bold text-lg ">
@@ -669,7 +558,7 @@ const AfterSelection = () => {
           </div>
 
           {/* Dot Indicators */}
-          <div className="flex justify-center space-x-2 mt-4">
+          <div className="flex justify-center space-x-2 mt-4 mb-[19px]">
             {Array(Math.ceil(items.length / cardsPerSlide))
               .fill()
               .map((_, index) => (
@@ -691,34 +580,16 @@ const AfterSelection = () => {
         <>
           {/* Trigger Button (Selection Panel) */}
           <div
-            className="SelectionPanel hover:transform hover:scale-[1.01]  w-[425px] h-[106px] px-[24px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] inline-flex items-center justify-start gap-[16px] cursor-pointer"
+            className="SelectionPanel hover:transform hover:scale-[1.01] w-[425px] h-[76px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] flex items-center justify-start cursor-pointer"
             onClick={toggleDialogDifficulty}
           >
-            <div className="Frame1000008202 cursor-pointer flex-[1_1_0] h-[106px] pt-[8px] pb-[8px] justify-start items-center gap-[16px] flex bg-none">
-              <svg
-                className="w-fit bg-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="34"
-                viewBox="0 0 32 34"
-                fill="none"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M16.1035 32.4483C16.1035 32.4483 28.9771 26.269 28.9771 17V4.64138L16.1035 1.55173L3.22998 4.64138V17C3.22998 26.269 16.1035 32.4483 16.1035 32.4483Z"
-                  stroke="#0072DC"
-                  strokeWidth="2.57471"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white ">
-                <div className="Heading gradient-text text-[24px] leading-[28px] font-semibold  break-words bg-none">
+            <div className="Frame1000008202 cursor-pointer flex bg-none ml-[25px] items-center">
+              <img src={shield} alt="" className="h-[24px] w-[24px]" />
+              <div className="Content h-full rounded-[8px] flex flex-col bg-white">
+                <div className="Heading gradient-text text-[18px] font-semibold leading-[28px] break-words bg-none ml-[10px]">
                   Difficulty Level
                 </div>
-                {/* Display Selected Level */}
-                <div className="gradient-text text-[18px] mt-[8px] text-start">
+                <div className="text-[#333232] text-[18px] ml-[10px] text-start">
                   {selectedLevel}
                 </div>
               </div>
@@ -764,6 +635,7 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
+                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
@@ -808,42 +680,15 @@ const AfterSelection = () => {
           {/* Selection Panel */}
           <div
             onClick={toggleDialogDuration}
-            className="SelectionPanel hover:transform hover:scale-[1.01]  w-[425px] h-[106px] px-[24px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] inline-flex items-center justify-start gap-[16px] cursor-pointer"
+            className="SelectionPanel hover:transform hover:scale-[1.01] w-[425px] h-[76px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] flex items-center justify-start cursor-pointer"
           >
-            <div className="Frame1000008202 cursor-pointer flex-[1_1_0] h-[106px] pt-[8px] pb-[8px] justify-start items-center gap-[16px] flex bg-none">
-              {" "}
-              <svg
-                className="w-fit bg-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_13_56)">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M11.6258 1.62951C11.6258 1.34367 11.7417 1.06953 11.9479 0.867404C12.1541 0.66528 12.4338 0.551727 12.7254 0.551727H18.5896C18.8813 0.551727 19.1609 0.66528 19.3671 0.867404C19.5733 1.06953 19.6892 1.34367 19.6892 1.62951C19.6892 1.91536 19.5733 2.1895 19.3671 2.39162C19.1609 2.59375 18.8813 2.7073 18.5896 2.7073H12.7254C12.4338 2.7073 12.1541 2.59375 11.9479 2.39162C11.7417 2.1895 11.6258 1.91536 11.6258 1.62951ZM15.6575 5.5814C12.4497 5.5814 9.37331 6.83047 7.10505 9.05384C4.8368 11.2772 3.56251 14.2927 3.56251 17.4371C3.56251 20.5814 4.8368 23.5969 7.10505 25.8203C9.37331 28.0436 12.4497 29.2927 15.6575 29.2927C18.8653 29.2927 21.9417 28.0436 24.21 25.8203C26.4782 23.5969 27.7525 20.5814 27.7525 17.4371C27.7525 14.2927 26.4782 11.2772 24.21 9.05384C21.9417 6.83047 18.8653 5.5814 15.6575 5.5814ZM1.36342 17.4371C1.36342 9.69854 7.76277 3.42583 15.6575 3.42583C23.5522 3.42583 29.9516 9.69854 29.9516 17.4371C29.9516 25.1756 23.5522 31.4483 15.6575 31.4483C7.76277 31.4483 1.36342 25.1756 1.36342 17.4371ZM15.6575 10.6111C15.9491 10.6111 16.2288 10.7246 16.435 10.9267C16.6412 11.1289 16.7571 11.403 16.7571 11.6889V17.4371C16.7571 17.7229 16.6412 17.997 16.435 18.1992C16.2288 18.4013 15.9491 18.5148 15.6575 18.5148C15.3659 18.5148 15.0862 18.4013 14.88 18.1992C14.6738 17.997 14.558 17.7229 14.558 17.4371V11.6889C14.558 11.403 14.6738 11.1289 14.88 10.9267C15.0862 10.7246 15.3659 10.6111 15.6575 10.6111Z"
-                    fill="#0072DC"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_13_56">
-                    <rect
-                      width="30.8965"
-                      height="30.8965"
-                      fill="white"
-                      transform="translate(0.120453 0.551727)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-              <div className=" cursor-pointer Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white">
-                <div className="Heading gradient-text text-[24px] font-semibold leading-[28px] break-words bg-none">
+            <div className="Frame1000008202 cursor-pointer flex bg-none ml-[25px] items-center">
+              <img src={timer} alt="" className="h-[24px] w-[24px]" />
+              <div className="cursor-pointer Content h-full rounded-[8px] flex flex-col justify-center items-start bg-white">
+                <div className="Heading gradient-text text-[18px] font-semibold leading-[28px] break-words bg-none ml-[10px]">
                   Duration per question
                 </div>
-                <div className="gradient-text text-[18px] mt-[8px] text-start">
+                <div className="text-[#333232] text-[18px] ml-[10px] text-start">
                   {duration} {duration ? "sec" : ""}
                 </div>
               </div>
@@ -889,6 +734,7 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
+                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
@@ -907,7 +753,6 @@ const AfterSelection = () => {
                 onChange={handleChangeDuration}
                 value={options.find((option) => option.value === duration)}
                 placeholder="Select time"
-                isSearchable={false}
               />
             </div>
           </Dialog>
@@ -915,42 +760,18 @@ const AfterSelection = () => {
         {/* ///////////Questions Card///////// */}
         <>
           <div
-            className="SelectionPanel hover:transform hover:scale-[1.01]  w-[425px] h-[106px] px-[24px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] inline-flex items-center justify-start gap-[16px] cursor-pointer"
+            className="SelectionPanel hover:transform hover:scale-[1.01] w-[299px] h-[76px] bg-white rounded-[10px] shadow-[0px_2px_12px_rgba(0,_0,_0,_0.25)] border-[2px] border-[#5C9AFF] flex items-center justify-start cursor-pointer"
             onClick={toggleDialogQuestions}
           >
-            <div className="Frame1000008202 cursor-pointer flex-[1_1_0] h-[106px] pt-[8px] pb-[8px] justify-start items-center gap-[16px] flex bg-none">
-              <svg
-                className="w-fit bg-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M7.08335 6.72795H5.25077C4.27872 6.72795 3.34647 7.1141 2.65913 7.80145C1.97178 8.48879 1.58563 9.42104 1.58563 10.3931V26.8862C1.58563 27.8583 1.97178 28.7905 2.65913 29.4779C3.34647 30.1652 4.27872 30.5514 5.25077 30.5514H21.7439C22.716 30.5514 23.6482 30.1652 24.3356 29.4779C25.0229 28.7905 25.4091 27.8583 25.4091 26.8862V25.0537"
-                  stroke="#0072DC"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M21.1982 5.3067L26.8305 10.939M29.4308 8.28244C30.1702 7.54301 30.5856 6.54014 30.5856 5.49444C30.5856 4.44874 30.1702 3.44587 29.4308 2.70645C28.6914 1.96702 27.6885 1.55162 26.6428 1.55162C25.5971 1.55162 24.5942 1.96702 23.8548 2.70645L8.05615 18.4488V24.0811H13.6885L29.4308 8.28244Z"
-                  stroke="#0072DC"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="cursor-pointer Content flex-1 h-full p-[16px] rounded-[8px] flex flex-col justify-center items-start bg-white">
-                <div className="Heading gradient-text text-[24px] font-semibold leading-[28px] break-words bg-none">
+            <div className="Frame1000008202 cursor-pointer flex bg-none ml-[25px] items-center">
+              <img src={edit} alt="" className="h-[24px] w-[24px]" />
+              <div className="cursor-pointer Content h-full rounded-[8px] flex flex-col justify-center items-start bg-white">
+                <div className="Heading gradient-text text-[18px] font-semibold leading-[28px] break-words bg-none ml-[10px]">
                   {questionsList.length
                     ? "Custom questions"
                     : "Type custom interview questions"}
                 </div>
-                <div className="gradient-text text-[18px] mt-[8px] text-start">
-                  {" "}
+                <div className="text-[#333232] text-[18px] ml-[10px] text-start">
                   {questionsList.length
                     ? `${questionsList.length} Question${
                         questionsList.length !== 1 ? "s" : ""
@@ -970,7 +791,7 @@ const AfterSelection = () => {
                 border: "1px solid var(--logo-gr-Blue-to-pink, #D388FF)",
                 background: "#FFF",
                 boxShadow: "0px 0px 4px 0px #D388FF",
-                padding: "32px 24px",
+                padding: "24px",
               },
               "& .MuiBackdrop-root": {
                 backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -999,17 +820,17 @@ const AfterSelection = () => {
             <DialogTitle
               style={{
                 textAlign: "center",
+                color: "#333232",
                 fontSize: 32,
                 fontWeight: 600,
                 padding: 0,
-                marginBottom: "24px"
               }}
             >
               Type custom interview questions
             </DialogTitle>
 
-            <div className="w-full flex flex-col gap-2 border-t border-t-[#353535] pt-[40px]">
-              
+            <div className="w-full flex flex-col gap-2">
+              <hr className="w-full mt-4 mb-6" />
 
               {questions.map((question, index) => (
                 <div
@@ -1034,11 +855,12 @@ const AfterSelection = () => {
               ))}
             </div>
 
-            <div className="mt-[32px] flex justify-center">
+            <div className="mt-6 flex justify-center">
               <button
                 onClick={handleSaveQuestions}
                 className="ButtonsCta w-[137px] h-[56px] px-[48px] py-[16px] bg-[#0072DC] rounded-[30px] justify-center items-center gap-[16px] inline-flex outline-none border-none"
               >
+                <img src={whiteMagic} alt="" />
                 <div className="Text flex text-center text-white text-[18px] font-[400] break-words">
                   Save
                 </div>
@@ -1047,8 +869,8 @@ const AfterSelection = () => {
           </Dialog>
         </>
       </div>
-      <div className="flex w-full justify-end px-12 pb-12 mt-[40px]">
-        <div className=" ButtonsCta px-[36px] h-[56px] rounded-[30px] justify-center items-center gap-4 inline-flex hover:cursor-pointer bg-question_gradient">
+      <div className="flex justify-end px-12">
+        <div className=" ButtonsCta rounded-[30px] justify-center items-center gap-4 inline-flex hover:cursor-pointer bg-question_gradient w-[181px] h-[40px] mt-[24px] mb-[10px]">
           <img src={whiteMagic} alt="" />
           <div className="Text text-center text-white text-lg font-semibold leading-[18px]">
             Take AI interview
